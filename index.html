@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Twenty-One</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<section class="section" id="section1">
+		<div class="image-container">
+			<img id="dealer-image" src="https://tinyclipart.com/resource/blackjack-clipart/blackjack-clipart-130.jpg">
+		</div>
+		<div id="dealer-pot">
+			<p id="dealer-bank"></p>
+			<input type="textbox" id="dealer-bank" placeholder="dealer bets">
+			<button type="button">Draw!</button>
+			<button type="button">Call!</button>
+		</div>
+		<div id="dealer-cards">
+		</div>
+	</section>
+
+	<section class="section" id="section2">
+		<div id="betting-pot">
+			<p>The current pot is</p>
+			<input type="textbox" placehoder="">
+		</div>
+		<div id="deck">
+		</div>
+	</section>
+
+	<section class="section" id="section3">
+		<div class="image-container">
+			<img id="player-image" src="http://www.picopistolero.com/readytodealhp.jpg">
+		</div>
+		<div id="player-pot">
+			<input type="textbox" id="player-bank" placeholder="Player Bets">
+			<p id="player-bank">Player Bank</p>
+			<button type="button">Draw!</button>
+			<button type="button">Call!</button>
+		</div>
+		<div id="player-cards">
+		</div>
+	</section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
