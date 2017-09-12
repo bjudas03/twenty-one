@@ -57,8 +57,8 @@ var cardObject;
 // var pot = playerBet + dealerBet;
 
 // var turnCount = 0
-// var playerScore = 0
-// var dealerScore = 0
+var playerScore;
+var dealerScore;
 
 //gets deck from API
 // function loadDeck() {
@@ -105,35 +105,47 @@ function drawCard(){
 		console.log(cardObject);
 		cardObject.forEach(function(item) {
 			var image = $('<img>').attr('src', item.image);
-			image.attr('class', 'cardImage');
-			$("#player-cards").append(image);
-		// for (value in cardObject) {
-		// 	switch (cardObject[0].value) {
-		// 		case "KING":
-		// 		case "QUEEN":
-		// 		case "JACK":
-		// 			return 10;
-		// 			break;
-		// 		case "ACE": {
-		// 			if ((playerScore + 11) <= 21) {
-		// 				return 11;
-		// 			} else {
-		// 				((playerScore + 1) <= 21) {
-		// 				return 1;
-		// 				}
-		// 			}
-		// 		}
-		// 	} else {	
-		// 	var valueString = cardObject[0].value;
-		// 	cardValue = parseInt(valueString);
-		// 	console.log(cardValue);
-		// }}};
+				image.attr('class', 'cardImage');
+				$("#player-cards").append(image);
+
+			for (value in cardObject) {
+				switch (cardObject[0].value) {
+					case "KING":
+					case "QUEEN":
+					case "JACK":
+						return 10;
+						console.log(cardObject[0].value);
+						playerScore = cardObject[0].value.return + playerScore;
+						break;
+					case "ACE": 
+						if ((playerScore + 11) <= 21) {
+							return 11;
+						} else if ((playerScore + 1) <= 21) {
+							return 1;
+						}
+						playerScore = cardObject[0].value.return + playerScore;
+						console.log(cardObject[0].value);
+						break;
+					default:	
+						var valueString = cardObject[0].value;
+						cardValue = parseInt(valueString);
+						console.log(cardValue);
+						playerScore = playerScore + cardValue
+						break;
+				}
+			  ////set return value of cardObject[0].value to new variable
+			  //add existing score to new variable = new score
+			} //get element by id (span/player-points) and set text to new score
+		});
 	});	
-})};				
+}		
 
 
 
-// initiateGame();
+// initiateGame() {
+// 	drawCard();
+// 	drawCard();
+// }
 drawCard();
 
 //does this click instigate other actions? Maybe add to draw function.
