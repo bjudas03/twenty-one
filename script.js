@@ -70,18 +70,19 @@ $.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').done(func
 deckId = localStorage.deck;
 console.log(deckId)
 
-function initiateGame() {
-	console.log('inside the initiateGame ', deckId)
-	$.get('https://deckofcardsapi.com/api/deck/'+deckId+'/draw/?count=2').done(function(response) {
-		console.log(response);
-		cardObject = response;
+// function initiateGame() {  //can possibly just use the drawCard() function twice, switch player, and run  twice more.
+// 	console.log('inside the initiateGame ', deckId)
+// 	$.get('https://deckofcardsapi.com/api/deck/'+deckId+'/draw/?count=2').done(function(response) {
+// 		console.log(response);
+// 		cardObject = response.cards;
+// 		console.log(cardObject);
 		// console.log('draw works');
-		for (value in cardObject) {
-			for (i = 0; i<=cardObject.length; i++) {
-			cardValue = parseInt(cardObject[i].value);
-			console.log(cardValue);
-		}
-	}
+		// for (value in cardObject) {
+		// 	for (i = 0; i<=cardObject.length; i++) {
+		// 	cardValue = parseInt(cardObject[i].value);
+		// 	console.log(cardValue);
+		// }
+	// }
 		// for (image in cardObject) {
 		// 		$("#player-cards").append("<img class='cardImage' src=" + cardObject.image + "/>");
 		// 		console.log("test")
@@ -92,20 +93,52 @@ function initiateGame() {
 
 			// }
 		// }
-		}
-	)
-};
+// 		}
+// 	)
+// };
 //////Do other query here, your deckId is localStorage.deck
 
-// function drawCard(){
-// 	console.log('inside of draw card', deckId)
-// 	$.get('https://deckofcardsapi.com/api/deck/'+deckId+'/draw/?count=1').done(function(response) {
-// 		console.log('draw works');
-// 		console.log(response);
-// 	}
-// )};
+//////how to make this function specific to individual player?? make images/values push to correct divs
+function drawCard(){
+	$.get('https://deckofcardsapi.com/api/deck/'+deckId+'/draw/?count=1').done(function(response) {
+		cardObject = response.cards;
+		console.log(cardObject);
+		cardObject.forEach(function(item) {
+			var image = $('<img>').attr('src', item.image);
+			image.attr('class', 'cardImage');
+			$("#player-cards").append(image);
+		// for (value in cardObject) {
+		// 	switch (cardObject[0].value) {
+		// 		case "KING":
+		// 		case "QUEEN":
+		// 		case "JACK":
+		// 			return 10;
+		// 			break;
+		// 		case "ACE": {
+		// 			if ((playerScore + 11) <= 21) {
+		// 				return 11;
+		// 			} else {
+		// 				((playerScore + 1) <= 21) {
+		// 				return 1;
+		// 				}
+		// 			}
+		// 		}
+		// 	} else {	
+		// 	var valueString = cardObject[0].value;
+		// 	cardValue = parseInt(valueString);
+		// 	console.log(cardValue);
+		// }}};
+	});	
+})};				
 
-initiateGame();
-// drawCard();
+
+
+// initiateGame();
+drawCard();
+
+//does this click instigate other actions? Maybe add to draw function.
+$(".draw").on('click', function(){
+	drawCard();
+});
 
 

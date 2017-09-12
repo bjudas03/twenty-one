@@ -14,6 +14,7 @@ section {
 
 #section2{
 	background: lightgreen;
+	width: 100%;
 }
 
 #section3{
@@ -49,3 +50,38 @@ button{
 	height: 30px;
 	margin: 20px 10px;
 }
+
+.dealer-score {
+	float: left;
+}
+
+.player-score {
+	float: right;
+}
+
+.cards-container {
+	float: right;
+}
+.cardImage {
+	margin: 25px 5px;
+	height: 200px;
+	width: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

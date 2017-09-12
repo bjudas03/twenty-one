@@ -16,18 +16,23 @@
 			<button type="button">Draw!</button>
 			<button type="button">Call!</button>
 		</div>
-		<div id="dealer-cards">
+		<div class="cards-container" id="dealer-cards">
 		</div>
 	</section>
 	<p></p>
 
 	<section class="section" id="section2">
+		<div class="dealer-score">
+			<p>"Dealer has "<span id="dealer-points"></span></p>
+		</div>
 		<div id="betting-pot">
 			<p>The current pot is</p>
 			<h1>"$" + pot </h1>
 		</div>
 		<div id="deck">
 		</div>
+		<div class="player-score">
+			<p>"Player has "<span id="player-points"></span></p>
 	</section>
 
 	<section class="section" id="section3">
@@ -37,10 +42,10 @@
 		<div id="player-pot">
 			<input type="textbox" id="player-bank" placeholder="Player Bets">
 			<p id="player-bank">Player Bank</p>
-			<button type="button">Draw!</button>
+			<button class="draw" type="button">Draw!</button>
 			<button type="button">Call!</button>
 		</div>
-		<div id="player-cards">
+		<div class="cards-container" id="player-cards">
 		</div>
 	</section>
 
