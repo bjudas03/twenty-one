@@ -1,0 +1,87 @@
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+section {
+	width: auto;
+	height: 33vh
+}
+
+#section1 {
+	background: lightgrey;
+}
+
+#section2{
+	background: lightgreen;
+	width: 100%;
+}
+
+#section3{
+	background: lightgrey;
+}
+#dealer-image {
+	float: left;
+	overflow: none;
+	background-size: cover;
+	height: 200px;
+	width: auto;
+	margin: 5px 20px;
+}
+
+#player-image {
+	float: right;
+	overflow: none;
+	background-size: cover;
+	height: 200px;
+	width: auto;
+	margin: 5px 20px;
+}
+#player-pot {
+	float:right;
+	width: 200px;
+}
+#dealer-pot {
+	float: left;
+	width: 200px;
+}
+button{
+	width: 175px;
+	height: 30px;
+	margin: 5px 10px;
+}
+
+.dealer-score {
+	float: left;
+}
+
+.player-score {
+	float: right;
+}
+
+.cards-container {
+	float: right;
+}
+.cardImage {
+	margin: 25px 5px;
+	height: 200px;
+	width: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

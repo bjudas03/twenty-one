@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Twenty-One</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<section class="section" id="section1">
+		<div class="image-container">
+			<img id="dealer-image" src="https://tinyclipart.com/resource/blackjack-clipart/blackjack-clipart-130.jpg">
+		</div>
+		<div id="dealer-pot"> <!--this whole div can be removed-->
+			<p id="dealer-bank"></p>
+			<input type="number" placeholder="dealer bets">
+			<p id="dealer-bank">Dealer Bank</p> <!--this can be removed-->
+			<button type="button">Draw!</button> <!--this can be removed-->
+			<button type="button">Call!</button> <!--this can be removed-->
+		</div>
+		<div class="cards-container" id="dealer-cards">
+		</div>
+	</section>
+
+	<section class="section" id="section2">
+		<div class="dealer-score">
+			<p>"Dealer has "<span id="dealer-points"></span>points</p>
+		</div>
+
+		<div>
+			<p>The current pot is</p>
+			<h1 id="betting-pot"></h1>
+		</div>
+
+		<div id="deck">
+		</div>
+
+		<div class="player-score">
+			<p>Player has <span id="player-points"></span> points</p>
+		</div>
+	</section>
+
+	<section class="section" id="section3">
+		<div class="image-container">
+			<img id="player-image" src="http://www.picopistolero.com/readytodealhp.jpg">
+		</div>
+		<div id="player-pot">
+			<input type="number" id="player-value" value=0>
+			<p>Player Bank</p>
+			<p id="player-bank">$</p>
+			<button type="button" class="commit">Commit!</button>
+			<button class="draw" type="button">Draw!</button>
+			<button type="button" class="call">Call!</button>
+		</div>
+
+		<div class="cards-container" id="player-cards">
+		</div>
+	</section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
