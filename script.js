@@ -40,8 +40,6 @@ var cardValue;
 var cardObject;
 var playerBank = 1000
 var pot = 0;
-
-// var turnCount = 0
 var playerScore = 0;
 var dealerScore = 0;
 
@@ -53,8 +51,6 @@ $.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').done(func
 });	
 deckId = localStorage.deck;
 console.log(deckId)
-
-
 
 //////Game Functions
 function bet() {
@@ -75,15 +71,6 @@ function bet() {
 			alert("Please Make an Acceptable Bet");  //make popup window with message "please make an acceptable bet"
 			};
 	}	
-};
-
-//function to draw initial cards: draw card function 2x/switch player/drawcard2x/switchplayer
-function startGame() {
-	//clear pot
-	//clear player points
-	//clear playecards div
-	drawCard();
-	drawCard();
 };
 
 //////how to make this function specific to individual player?? make images/values push to correct divs
@@ -117,29 +104,17 @@ function drawCard(){
 						playerScore = playerScore + cardValue;
 						break;
 				}
-			$('#player-points').text(playerScore)}; //get element by id (span/player-points) and set text to new score
-		});//checkWinner - check to see if player busts
-	});	//callButton() - switch to dealer turn
-}		
-
-// Dealer Turn  -  reasign tags for dealer side
-//pseudocode - 
-	//call api
-	//store result in temp array
-	//lay down cards[0] and cards[1]
-	//figure out value for cards[0],[1]
-	//while loop - dealerScore <= 16 {
-			//then hit
-		//} else {
-			//stand
-		//}
-
+			$('#player-points').text(playerScore)
+			// checkWin();
+		}; 
+		});
+	});	
+};		
 
 function dealerTurn() {
 	$.get('https://deckofcardsapi.com/api/deck/'+deckId+'/draw/?count=7').done(function(response) {
 		cardArray = response.cards;
 		console.log(cardArray);
-		// for (var i = 0; i <= cardArray.length) {
 		var i = 0;
 		var currentCardIndex = 0;
 		console.log(currentCardIndex);
@@ -172,40 +147,55 @@ function dealerTurn() {
 								break;
 						}
 					$('#dealer-points').text(dealerScore);
-					break;
-						 //get element by id (span/player-points) and set text to new score
-					}//if playerscore > 21 - reset pot - restart game()
+					break;				
+					}
+				// checkWin();	
 				currentCardIndex++;
 			}
 		}
 	)};			
+
+// function checkWin() {
+// 	if (playerScore > 21) {
+// 		console.log("player is over 21");
+// 		pot = 0;
+// 		playerScore = 0;
+// 		$(".cards-container").empty();
+// 	} else if (playerScore <= dealerScore) {
+// 		console.log("You Lose");
+// 		pot = 0;
+// 		playerScore = 0;
+// 		dealerScore = 0;
+// 		$(".cards-container").empty();
+// 	} else if ((playerScore >= dealerScore) || dealerScore > 21) {
+// 		playerScore = 0;
+// 		dealerScore = 0;
+// 		allocatePot();
+// 		console.log("player wins hand");
+// 		$(".cards-container").empty();
+// 	}
 // };
 
+function allocatePot() {
+	playerBank = playerBank + (pot * 3);
+	pot = 0;
+}
 
-
-
-
-
-
-
-//call button
-	//dealerDraw()
-	//checkfor Bust
-	//checkWin
-	//relocatePot
 $(".call").on('click', function() {
 	dealerTurn();
 });
 
-debugger;
-dealerTurn();
-bet();
-$(".commit").on('click', bet);
+$(".commit").on('click', function() {
+	bet();
+	drawCard();
+	drawCard();
+});
 
-//does this click instigate other actions? Maybe add to draw function.
 $(".draw").on('click', function(){
 	drawCard();
 });
+
+
 
 
 
