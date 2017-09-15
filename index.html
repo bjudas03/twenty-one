@@ -2,50 +2,44 @@
 <html>
 <head>
 	<title>Twenty-One</title>
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<section class="section" id="section1">
 		<div class="image-container">
-			<img id="dealer-image" src="https://tinyclipart.com/resource/blackjack-clipart/blackjack-clipart-130.jpg">
+			<img id="dealer-image" src="img/Aku.jpg">
+			<!--<img id="dealer-image" src="https://tinyclipart.com/resource/blackjack-clipart/blackjack-clipart-130.jpg">-->
 		</div>
-		<div id="dealer-pot"> <!--this whole div can be removed-->
-			<p id="dealer-bank"></p>
-			<input type="number" placeholder="dealer bets">
-			<p id="dealer-bank">Dealer Bank</p> <!--this can be removed-->
-			<button type="button">Draw!</button> <!--this can be removed-->
-			<button type="button">Call!</button> <!--this can be removed-->
-		</div>
+		
 		<div class="cards-container" id="dealer-cards">
 		</div>
 	</section>
 
 	<section class="section" id="section2">
 		<div class="dealer-score">
-			<p>"Dealer has "<span id="dealer-points"></span>points</p>
+			<p>Dealer has </br><span class="scores" id="dealer-points"></span></br>points</p>
 		</div>
 
-		<div>
-			<p>The current pot is</p>
+		<div id="pot-container">
+			<p id="container">The current pot is</p>
 			<h1 id="betting-pot"></h1>
 		</div>
 
-		<div id="deck">
-		</div>
-
 		<div class="player-score">
-			<p>Player has <span id="player-points"></span> points</p>
+			<p>Player has </br><span class="scores" id="player-points"></span></br>points</p>
 		</div>
 	</section>
 
 	<section class="section" id="section3">
 		<div class="image-container">
-			<img id="player-image" src="http://www.picopistolero.com/readytodealhp.jpg">
+			<img id="player-image" src="img/SJ56.png">
+			<!--<img id="player-image" src="http://www.picopistolero.com/readytodealhp.jpg">-->
 		</div>
 		<div id="player-pot">
 			<input type="number" id="player-value" value=0>
-			<p>Player Bank</p>
-			<p id="player-bank">$</p>
+			<h2>Player Bank</h2>
+			<h2><p id="player-bank"></p></h2>
 			<button type="button" class="commit">Commit!</button>
 			<button class="draw" type="button">Draw!</button>
 			<button type="button" class="call">Call!</button>

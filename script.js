@@ -1,40 +1,3 @@
-//BET pseudocode
-	//input player $ value into text box
-	//pres commit
-		//value from text box get removed from player pot
-		//value from text box gets added to betting pot
-		//switch turn to player 2
-	//input dealer $ value into text box
-		//value from text box gets removed from dealer pot
-		//value from text box gets added to betting pot
-		//swtich to player 1
-		//start draw card function
-
-//Draw Card Function
-//  --  needs  --  
-		//pull 1 card from API 
-		//parse string value of card to integer: add to player score
-			//check to see if score value => 21
-				//if 21 => you win
-				//if over 21 => you bust
-				//if under 21
-				//	reset back to draw card function
-	//option for draw or stay
-		//on draw - repeat from draw card function
-		//on stay - next turn
-			//set interval 5 secs
-			//hide player section
-			//switch turn
-
-//switch turn function
-	//increase turn counter ++
-	//show player section
-
-
-
-
-
-
 var deckId = '';
 var cardValue;
 var cardObject;
@@ -105,7 +68,7 @@ function drawCard(){
 						break;
 				}
 			$('#player-points').text(playerScore)
-			// checkWin();
+			checkBust();
 		}; 
 		});
 	});	
@@ -148,37 +111,49 @@ function dealerTurn() {
 						}
 					$('#dealer-points').text(dealerScore);
 					break;				
-					}
-				// checkWin();	
+					}	
 				currentCardIndex++;
 			}
+		// setTimeout(checkWin, 3000);	
 		}
 	)};			
 
-// function checkWin() {
-// 	if (playerScore > 21) {
-// 		console.log("player is over 21");
-// 		pot = 0;
-// 		playerScore = 0;
-// 		$(".cards-container").empty();
-// 	} else if (playerScore <= dealerScore) {
-// 		console.log("You Lose");
-// 		pot = 0;
-// 		playerScore = 0;
-// 		dealerScore = 0;
-// 		$(".cards-container").empty();
-// 	} else if ((playerScore >= dealerScore) || dealerScore > 21) {
-// 		playerScore = 0;
-// 		dealerScore = 0;
-// 		allocatePot();
-// 		console.log("player wins hand");
-// 		$(".cards-container").empty();
-// 	}
-// };
+function checkBust() {
+	if (playerScore > 21) {
+		console.log("player is over 21");
+		// setTimeout(resetBoard, 3000);
+	}
+}
+
+function resetBoard() {
+	pot = 0;
+	playerScore = 0;
+	dealerScore = 0;
+	$(".cards-container").empty();
+	$("#betting-pot").text(parseInt(0));
+	$(".scores").text(0);
+	$(".commit").toggle();
+
+}
+
+function checkWin() {
+	if (playerScore > 21) {
+		console.log("player is over 21");
+		resetBoard();
+	} else if (playerScore <= dealerScore) {
+		console.log("You Lose");
+		resetBoard();
+	} else if ((playerScore > dealerScore) || dealerScore > 21) {
+		console.log("player wins hand");
+		allocatePot();
+		resetBoard();
+}};
 
 function allocatePot() {
 	playerBank = playerBank + (pot * 3);
 	pot = 0;
+	$("#player-bank").text(parseInt(playerBank));
+	$("#betting-pot").text(parseInt(0));
 }
 
 $(".call").on('click', function() {
@@ -189,13 +164,14 @@ $(".commit").on('click', function() {
 	bet();
 	drawCard();
 	drawCard();
+	$(".commit").toggle();
 });
 
 $(".draw").on('click', function(){
 	drawCard();
 });
 
-
+bet();
 
 
 
