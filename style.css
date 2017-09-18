@@ -87,9 +87,10 @@ button{
 #player-cards {
 	float: right;
 }
+
 .cardImage {
 	margin: 25px 5px;
-	height: 200px;
+	height: 175px;
 	width: auto;
 }
 #dealer-cards {
@@ -128,7 +129,13 @@ h2 {
 	margin: 20px auto;
 }
 
+.draw {
+	display: none;
+}
 
+.call {
+	display: none;
+}
 
 
 

@@ -13,7 +13,6 @@ $.get('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').done(func
 	localStorage.deck = deckId;
 });	
 deckId = localStorage.deck;
-console.log(deckId)
 
 //////Game Functions
 function bet() {
@@ -21,13 +20,10 @@ function bet() {
 	playerBet = parseInt(playerBet);
 	if (playerBet <= playerBank) {
 			$("#player-bank").text(parseInt(playerBank));
-				console.log(playerBet);
 				$("#player-value").val('');  //resets the player bet box
 				$("#player-bank").text(parseInt(playerBank) - parseInt(playerBet)); //returns the player bank as less the bet: returns as string??
 				playerBank = playerBank - parseInt(playerBet);
-				console.log(playerBank);
 				pot = parseInt(playerBet) + parseInt(pot); //should add player bet to total pot - returns as Object object??
-				console.log(pot);
 				$("#betting-pot").text(parseInt(pot)); //puts new total pot in betting pot <p<span>> tag
 	} else {
 		function alert() {
@@ -40,7 +36,6 @@ function bet() {
 function drawCard(){
 	$.get('https://deckofcardsapi.com/api/deck/'+deckId+'/draw/?count=1').done(function(response) {
 		cardObject = response.cards;
-		console.log(cardObject);
 		cardObject.forEach(function(item) {
 			var image = $('<img>').attr('src', item.image);
 				image.attr('class', 'cardImage');
@@ -63,7 +58,6 @@ function drawCard(){
 					default:	
 						var valueString = cardObject[0].value;
 						cardValue = parseInt(valueString);
-						console.log(cardValue);
 						playerScore = playerScore + cardValue;
 						break;
 				}
@@ -77,10 +71,8 @@ function drawCard(){
 function dealerTurn() {
 	$.get('https://deckofcardsapi.com/api/deck/'+deckId+'/draw/?count=7').done(function(response) {
 		cardArray = response.cards;
-		console.log(cardArray);
 		var i = 0;
 		var currentCardIndex = 0;
-		console.log(currentCardIndex);
 			
 			while (dealerScore <= 16) {
 				cardArray[currentCardIndex]   
@@ -105,7 +97,6 @@ function dealerTurn() {
 							default:	
 								var valueString = cardArray[currentCardIndex].value;
 								cardValue = parseInt(valueString);
-								console.log(cardValue);
 								dealerScore = dealerScore + cardValue;
 								break;
 						}
@@ -114,14 +105,14 @@ function dealerTurn() {
 					}	
 				currentCardIndex++;
 			}
-		// setTimeout(checkWin, 3000);	
+		setTimeout(checkWin, 3000);	
 		}
 	)};			
 
 function checkBust() {
 	if (playerScore > 21) {
 		console.log("player is over 21");
-		// setTimeout(resetBoard, 3000);
+		setTimeout(resetBoard, 3000);
 	}
 }
 
@@ -133,7 +124,8 @@ function resetBoard() {
 	$("#betting-pot").text(parseInt(0));
 	$(".scores").text(0);
 	$(".commit").toggle();
-
+	$(".draw").toggle();
+	$(".call").toggle();
 }
 
 function checkWin() {
@@ -165,6 +157,8 @@ $(".commit").on('click', function() {
 	drawCard();
 	drawCard();
 	$(".commit").toggle();
+	$(".draw").toggle();
+	$(".call").toggle();
 });
 
 $(".draw").on('click', function(){
